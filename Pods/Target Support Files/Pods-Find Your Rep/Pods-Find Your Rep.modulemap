@@ -1,0 +1,6 @@
+framework module Pods_Find_Your_Rep {
+  umbrella header "Pods-Find Your Rep-umbrella.h"
+
+  export *
+  module * { export * }
+}
