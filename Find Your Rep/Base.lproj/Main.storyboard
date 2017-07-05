@@ -119,7 +119,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Search"/>
                                 <connections>
-                                    <action selector="searchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CoC-tB-bRN"/>
+                                    <action selector="searchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8p5-Ng-fah"/>
                                     <segue destination="pfY-Q9-g3H" kind="show" identifier="showTableScreen" id="CXn-17-8IU"/>
                                 </connections>
                             </button>

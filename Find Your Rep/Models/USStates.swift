@@ -9,7 +9,7 @@
 import UIKit
 
 struct USStates {
-    var statesDictionary = ["Alabama": "AL",
+    var stateDictionary = ["Alabama": "AL",
                             "Alaska": "AK",
                             "Arizona": "AZ",
                             "Arkansas": "AR",

@@ -22,7 +22,9 @@ import AlamofireNetworkActivityIndicator
 
 class ViewController: UIViewController {
 
-    
+    let headers: HTTPHeaders = [
+        "X-API-Key": "mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR"
+    ]
 
     @IBOutlet weak var zipCodeField: UITextField!
     @IBOutlet weak var cityField: UITextField!
@@ -32,21 +34,21 @@ class ViewController: UIViewController {
     @IBAction func startButtonPressed(_ sender: UIButton) {
     }
     
-    let headers: HTTPHeaders = [
-        "X-API-Key": "mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR"
-    ]
+    @IBAction func searchButtonPressed(_ sender: UIButton) {
+        print("This works. Yay!")
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //var abbreviation = stateField.text!
         var abbreviation = "Illinois"
         let roshaan = USStates()
         
-        var URL = "https://api.propublica.org/congress/v1/members/senate/\(roshaan.statesDictionary[abbreviation]!)/current.json"
+        var URL = "https://api.propublica.org/congress/v1/members/senate/\(roshaan.stateDictionary[abbreviation]!)/current.json"
         print(abbreviation)
         print(URL)
+        print(stateField.text)
+        
+        var secondtest = roshaan.stateDictionary[stateField.text!]
+        print(secondtest)
+        print("I hope it worked!")
+        
         Alamofire.request(URL, headers: headers).responseJSON { response in
             debugPrint(response)
             
@@ -60,6 +62,14 @@ class ViewController: UIViewController {
                 print("I am NOT working!)")
             }
         }
+
+    }
+    
+ 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
     }
     
 
