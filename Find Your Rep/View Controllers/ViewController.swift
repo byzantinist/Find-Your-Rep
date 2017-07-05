@@ -37,17 +37,27 @@ class ViewController: UIViewController {
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         print("This works. Yay!")
 
-        var abbreviation = "Illinois"
+//        var abbreviation = "Texas"
         let roshaan = USStates()
+
+//        var secondtest = roshaan.stateDictionary[stateField.text!]
+//        print(secondtest)
+//        print("I hope it worked!")
+
         
-        var URL = "https://api.propublica.org/congress/v1/members/senate/\(roshaan.stateDictionary[abbreviation]!)/current.json"
-        print(abbreviation)
+        guard let USState = stateField.text, let dictionaryWrap = roshaan.stateDictionary[USState] else {
+            return
+        }
+        
+        var URL = "https://api.propublica.org/congress/v1/members/senate/\(dictionaryWrap)/current.json"
+//        var URL = "https://api.propublica.org/congress/v1/members/senate/\(roshaan.stateDictionary[abbreviation]!)/current.json"
+//        print(abbreviation)
         print(URL)
-        print(stateField.text)
+        print(stateField.text!)
         
-        var secondtest = roshaan.stateDictionary[stateField.text!]
-        print(secondtest)
-        print("I hope it worked!")
+
+
+        
         
         Alamofire.request(URL, headers: headers).responseJSON { response in
             debugPrint(response)
