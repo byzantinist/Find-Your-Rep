@@ -35,50 +35,36 @@ class ViewController: UIViewController {
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-        print("This works. Yay!")
 
-//        var abbreviation = "Texas"
         let roshaan = USStates()
-
-//        var secondtest = roshaan.stateDictionary[stateField.text!]
-//        print(secondtest)
-//        print("I hope it worked!")
-
         
         guard let USState = stateField.text, let dictionaryWrap = roshaan.stateDictionary[USState] else {
             return
         }
         
         var URL = "https://api.propublica.org/congress/v1/members/senate/\(dictionaryWrap)/current.json"
-//        var URL = "https://api.propublica.org/congress/v1/members/senate/\(roshaan.stateDictionary[abbreviation]!)/current.json"
-//        print(abbreviation)
-        print(URL)
-        print(stateField.text!)
-        
-
-
-        
         
         Alamofire.request(URL, headers: headers).responseJSON { response in
-            debugPrint(response)
             
             if let json = response.result.value {
-                print("JSON: \(json)") // serialized json response
-                print("Am I working")
+                let info = JSON(json)
+                print(info["results"][1]["name"].stringValue)
             }
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)") // original server data as UTF8 string
-                print("I am NOT working!)")
-            }
-        }
+                
+                var testjson = JSON(data: data)
+             }
 
+        }
+        
     }
     
  
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         
     }
     
