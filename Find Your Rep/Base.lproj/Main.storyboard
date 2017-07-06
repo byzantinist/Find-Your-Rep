@@ -123,12 +123,17 @@
                                     <segue destination="pfY-Q9-g3H" kind="show" identifier="showTableScreen" id="CXn-17-8IU"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rTY-66-2jM">
+                                <rect key="frame" x="-8" y="400" width="375" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="cityField" destination="cTT-sp-GNb" id="WDt-iJ-XV1"/>
                         <outlet property="filterSelector" destination="bN5-du-sKg" id="rHz-Rg-MSe"/>
+                        <outlet property="pickerSelector" destination="rTY-66-2jM" id="jUa-j9-35B"/>
                         <outlet property="stateField" destination="ZXt-vI-DS1" id="tZC-5C-MYp"/>
                         <outlet property="zipCodeField" destination="bN5-du-sKg" id="rPB-0W-yvE"/>
                     </connections>
@@ -183,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JsQ-jF-G8T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1504.8" y="32.833583208395808"/>
+            <point key="canvasLocation" x="1606" y="35"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="HgF-nX-OBI">
@@ -241,6 +246,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NA9-XT-hV2"/>
+        <segue reference="CXn-17-8IU"/>
     </inferredMetricsTieBreakers>
 </document>

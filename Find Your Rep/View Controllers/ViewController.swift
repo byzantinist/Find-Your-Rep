@@ -20,36 +20,64 @@ import AlamofireNetworkActivityIndicator
 
 
 
-class ViewController: UIViewController {
-
-    let headers: HTTPHeaders = [
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    var senators = [String]()
+      let headers: HTTPHeaders = [
         "X-API-Key": "mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR"
     ]
-
+   
     @IBOutlet weak var zipCodeField: UITextField!
     @IBOutlet weak var cityField: UITextField!
     @IBOutlet weak var stateField: UITextField!
     @IBOutlet weak var filterSelector: UITextField!
+    @IBOutlet weak var pickerSelector: UIPickerView!
+    
+    var pickerData: [String] = [String]()
     
     @IBAction func startButtonPressed(_ sender: UIButton) {
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-
-        let roshaan = USStates()
         
-        guard let USState = stateField.text, let dictionaryWrap = roshaan.stateDictionary[USState] else {
+        
+        let roshaan = USStates()
+ 
+        let selectedValue = self.pickerData[self.pickerSelector.selectedRow(inComponent: 0)]
+        print(selectedValue)
+        print("TEST")
+        
+/* Old code            guard let USState = selectedValue, let dictionaryWrap = roshaan.stateDictionary[USState] else {
+            return
+        }*/
+        
+        guard let dictionaryWrap = roshaan.stateDictionary[selectedValue] else {
             return
         }
         
         var URL = "https://api.propublica.org/congress/v1/members/senate/\(dictionaryWrap)/current.json"
         
         Alamofire.request(URL, headers: headers).responseJSON { response in
-            
-            if let json = response.result.value {
-                let info = JSON(json)
-                print(info["results"][1]["name"].stringValue)
+            switch response.result {
+            case .success:
+                if let json = response.result.value {
+                    let info = JSON(json)
+                    print(info["results"][0]["name"].stringValue)
+                    print(info["results"][1]["name"].stringValue)
+                    self.senators.append("\(info["results"][0]["name"].stringValue)")
+                    self.senators.append("\(info["results"][1]["name"].stringValue)")
+                    print(self.senators)
+                    
+                    print("You selected \(selectedValue)")
+
+                    
+                    let table = TableViewController()
+                
+
+                }
+            case .failure(let error):
+                print(error)
             }
+
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 
@@ -58,15 +86,67 @@ class ViewController: UIViewController {
 
         }
         
-    }
+            }
+    
     
  
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
+        self.pickerSelector?.delegate = self
+        self.pickerSelector?.dataSource = self
+        pickerData = ["Alabama",
+                      "Alaska",
+                      "Arizona",
+                      "Arkansas",
+                      "California",
+                      "Colorado",
+                      "Connecticut",
+                      "Delaware",
+                      "Florida",
+                      "Georgia",
+                      "Hawaii",
+                      "Idaho",
+                      "Illinois",
+                      "Indiana",
+                      "Iowa",
+                      "Kansas",
+                      "Kentucky",
+                      "Louisiana",
+                      "Maine",
+                      "Maryland",
+                      "Massachusetts",
+                      "Michigan",
+                      "Minnesota",
+                      "Mississippi",
+                      "Missouri",
+                      "Montana",
+                      "Nebraska",
+                      "Nevada",
+                      "New Hampshire",
+                      "New Jersey",
+                      "New Mexico",
+                      "New York",
+                      "North Carolina",
+                      "North Dakota",
+                      "Ohio",
+                      "Oklahoma",
+                      "Oregon",
+                      "Pennsylvania",
+                      "Rhode Island",
+                      "South Carolina",
+                      "South Dakota",
+                      "Tennessee",
+                      "Texas",
+                      "Utah",
+                      "Vermont",
+                      "Virginia",
+                      "Washington",
+                      "West Virginia",
+                      "Wisconsin",
+                      "Wyoming"]
     }
+    
     
 
     override func didReceiveMemoryWarning() {
@@ -74,6 +154,20 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    }
 
 }
 

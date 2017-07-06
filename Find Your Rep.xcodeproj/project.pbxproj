@@ -17,6 +17,7 @@
 		C7A1026B1F0D411E00B44395 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A1026A1F0D411E00B44395 /* TableViewController.swift */; };
 		C7A5401A1F0D6D340079AFBD /* StateAbbreviations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A540191F0D6D340079AFBD /* StateAbbreviations.swift */; };
 		C7A5401C1F0D6F7C0079AFBD /* USStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A5401B1F0D6F7C0079AFBD /* USStates.swift */; };
+		C7E5069F1F0E9D9300FD00B4 /* ApiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5069E1F0E9D9300FD00B4 /* ApiData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		C7A1026A1F0D411E00B44395 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = "View Controllers/TableViewController.swift"; sourceTree = "<group>"; };
 		C7A540191F0D6D340079AFBD /* StateAbbreviations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StateAbbreviations.swift; path = Models/StateAbbreviations.swift; sourceTree = "<group>"; };
 		C7A5401B1F0D6F7C0079AFBD /* USStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = USStates.swift; path = Models/USStates.swift; sourceTree = "<group>"; };
+		C7E5069E1F0E9D9300FD00B4 /* ApiData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiData.swift; path = Models/ApiData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				C7A540191F0D6D340079AFBD /* StateAbbreviations.swift */,
 				C7A5401B1F0D6F7C0079AFBD /* USStates.swift */,
+				C7E5069E1F0E9D9300FD00B4 /* ApiData.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			files = (
 				C73DB8F41F0D49E600D977EA /* ViewController.swift in Sources */,
 				C7A5401A1F0D6D340079AFBD /* StateAbbreviations.swift in Sources */,
+				C7E5069F1F0E9D9300FD00B4 /* ApiData.swift in Sources */,
 				C7A1026B1F0D411E00B44395 /* TableViewController.swift in Sources */,
 				C7A5401C1F0D6F7C0079AFBD /* USStates.swift in Sources */,
 				C7A102491F0D353C00B44395 /* AppDelegate.swift in Sources */,
