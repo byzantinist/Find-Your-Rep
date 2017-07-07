@@ -34,12 +34,15 @@ class TableViewController: UITableViewController {
                     //self.senators.append("\(info["results"][0]["name"].stringValue)")
                     //self.senators.append("\(info["results"][1]["name"].stringValue)")
                     //print(self.senators)
+                   
+                    let senator1 = SenatorModel(senatorModelName: info["results"][0]["name"].stringValue, senatorModelParty: info["results"][0]["party"].stringValue, senatorModelGender: info["results"][0]["gender"].stringValue )
+                    let senator2 = SenatorModel(senatorModelName: info["results"][1]["name"].stringValue, senatorModelParty: info["results"][1]["party"].stringValue, senatorModelGender: info["results"][1]["gender"].stringValue )
                     
-                    let senator1 = SenatorModel(senatorModelName: info["results"][0]["name"].stringValue)
-                    let senator2 = SenatorModel(senatorModelName: info["results"][1]["name"].stringValue)
+                
                     self.senatorArray.append(senator1)
                     self.senatorArray.append(senator2)
                     //print("You selected \(selectedValue)")
+                     print(info["results"][0])
                     
                     
                     self.tableView.reloadData()
@@ -82,14 +85,14 @@ class TableViewController: UITableViewController {
             let senator = senatorArray[row]
             print(senator.senatorModelName)
             cell.senatorName.text = senator.senatorModelName
-        
+  //          cell.senatorState.text = senator.senatorModelName
         
         
         
         
   //      cell.senatorState.text = senator.senatorState
-  //      cell.senatorParty.text = "Trump Party"
-  //      cell.senatorGender.text = "Male"
+        cell.senatorParty.text = senator.senatorModelParty
+        cell.senatorGender.text = senator.senatorModelGender
 
        
         

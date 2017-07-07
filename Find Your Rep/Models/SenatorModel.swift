@@ -10,10 +10,13 @@ import UIKit
 
 class SenatorModel: NSObject {
     var senatorModelName: String
+    var senatorModelParty: String
+    var senatorModelGender: String
     
-    init(senatorModelName:  String) {
+    init(senatorModelName: String, senatorModelParty: String, senatorModelGender: String) {
         self.senatorModelName = senatorModelName
-
+        self.senatorModelParty = senatorModelParty
+        self.senatorModelGender = senatorModelGender
         
     }
     
