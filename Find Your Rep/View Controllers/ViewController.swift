@@ -26,16 +26,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         "X-API-Key": "mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR"
     ]
    
-    @IBOutlet weak var zipCodeField: UITextField!
-    @IBOutlet weak var cityField: UITextField!
-    @IBOutlet weak var stateField: UITextField!
-    @IBOutlet weak var filterSelector: UITextField!
     @IBOutlet weak var pickerSelector: UIPickerView!
     
     var pickerData: [String] = [String]()
-    
-    @IBAction func startButtonPressed(_ sender: UIButton) {
-    }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         
@@ -93,6 +86,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         self.pickerSelector?.delegate = self
         self.pickerSelector?.dataSource = self
         pickerData = ["Alabama",
