@@ -59,7 +59,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="searchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fVX-e5-erG"/>
-                                                    <segue destination="pfY-Q9-g3H" kind="show" identifier="showTable" id="kdP-fC-W6t"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -89,6 +88,7 @@
                     </view>
                     <connections>
                         <outlet property="pickerSelector" destination="rTY-66-2jM" id="jSN-Qe-DqX"/>
+                        <segue destination="pfY-Q9-g3H" kind="show" identifier="showTable" id="2JO-vv-IdK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -139,7 +139,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(You Can Click For More Details!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouw-Vl-da1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(Future Functionality)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouw-Vl-da1">
                                             <rect key="frame" x="8" y="163" width="252" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -188,6 +188,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kdP-fC-W6t"/>
+        <segue reference="2JO-vv-IdK"/>
     </inferredMetricsTieBreakers>
 </document>

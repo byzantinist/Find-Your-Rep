@@ -64,8 +64,8 @@ class TableViewController: UITableViewController {
          super.viewDidLoad()
         
         
-//        loadData()
-//        self.tableView.reloadData()
+        loadData()
+        self.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

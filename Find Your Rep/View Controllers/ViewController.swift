@@ -42,12 +42,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         //URL = "https://api.propublica.org/congress/v1/members/senate/il/current.json"
         URL = "https://api.propublica.org/congress/v1/members/senate/\(selectedState)/current.json"
-        print("This is our URL:")
-        print(URL)
-        
-        
-        print("We want to pass: \(selectedState)")
-        
+        performSegue(withIdentifier: "showTable", sender: self)
     }
     
     
@@ -118,8 +113,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "showTable" {
-                print("Transitioning")
-                print(selectedState)
                 let tableViewController = segue.destination as! TableViewController
 //                tableViewController.selectedState = self.selectedState
             }
