@@ -14,7 +14,7 @@ var myIndex = 0
 class TableViewController: UITableViewController {
 
     var test2 = [String]()
-  
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         // #warning Incomplete implementation, return the number of rows
@@ -23,11 +23,13 @@ class TableViewController: UITableViewController {
        
     }
     let testing = ViewController()
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let senatorCell = tableView.dequeueReusableCell(withIdentifier: "senatorCell", for: indexPath)
         print(testing.senators)
- //  cell.textLabel?.text = testing.senators[indexPath.row]
-            return cell
+//        senatorCell.textLabel?.text = "Yay it's working!"
+        //  cell.textLabel?.text = testing.senators[indexPath.row]
+            return senatorCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -39,6 +41,13 @@ class TableViewController: UITableViewController {
    /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }*/
 }
+
+class SenatorCell: UITableViewCell {
     
-    
+    @IBOutlet weak var senatorName: UILabel!
+    @IBOutlet weak var senatorState: UILabel!
+    @IBOutlet weak var senatorParty: UILabel!
+    @IBOutlet weak var senatorGender: UILabel!
+}
+
 

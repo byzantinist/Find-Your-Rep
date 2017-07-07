@@ -81,9 +81,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
             }
     
-    @IBAction func locateButtonPressed(_ sender: UIButton) {
-        print("Test Button")
-    }
     
  
     override func viewDidLoad() {
