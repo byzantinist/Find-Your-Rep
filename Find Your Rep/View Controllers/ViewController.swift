@@ -22,6 +22,10 @@ import AlamofireNetworkActivityIndicator
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var senators = [String]()
+    
+    var URL: String?
+    
+    
       let headers: HTTPHeaders = [
         "X-API-Key": "mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR"
     ]
@@ -29,6 +33,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var pickerSelector: UIPickerView!
     
     var pickerData: [String] = [String]()
+    var senatorArray: [SenatorModel] = []
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         
@@ -36,8 +41,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let roshaan = USStates()
  
         let selectedValue = self.pickerData[self.pickerSelector.selectedRow(inComponent: 0)]
-        print(selectedValue)
-        print("TEST")
         
 /* Old code            guard let USState = selectedValue, let dictionaryWrap = roshaan.stateDictionary[USState] else {
             return
@@ -47,38 +50,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             return
         }
         
-        var URL = "https://api.propublica.org/congress/v1/members/senate/\(dictionaryWrap)/current.json"
+        self.URL = "https://api.propublica.org/congress/v1/members/senate/\(dictionaryWrap)/current.json"
         
-        Alamofire.request(URL, headers: headers).responseJSON { response in
-            switch response.result {
-            case .success:
-                if let json = response.result.value {
-                    let info = JSON(json)
-                    print(info["results"][0]["name"].stringValue)
-                    print(info["results"][1]["name"].stringValue)
-                    self.senators.append("\(info["results"][0]["name"].stringValue)")
-                    self.senators.append("\(info["results"][1]["name"].stringValue)")
-                    print(self.senators)
-                    
-                    print("You selected \(selectedValue)")
-
-                    
-                    let table = TableViewController()
                 
-
-                }
-            case .failure(let error):
-                print(error)
-            }
-
-            
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                
-                var testjson = JSON(data: data)
-             }
-
-        }
-        
             }
     
     @IBAction func locateButtonPressed(_ sender: UIButton) {
@@ -151,6 +125,33 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Dispose of any resources that can be recreated.
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "showTable" {
+                print("Transitioning")
+                print(senatorArray.count)
+                let tableViewController = segue.destination as! TableViewController
+                //tableViewController.URL = self.URL
+            }
+        }
+    }
+    
+/*    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "displayNote" {
+                print("Table view cell tapped")
+                
+                let indexPath = tableView.indexPathForSelectedRow!
+                let note = notes[notes.count - 1 - indexPath.row]
+                let displayNoteViewController = segue.destination as! DisplayNoteViewController
+                displayNoteViewController.note = note
+                
+            } else if identifier == "addNote" {
+                print("+ button tapped")
+            }
+        }
+    }
+ */   
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -165,6 +166,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     }
+    /*
+    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+        <#code#>
+    }*/
 
 }
 

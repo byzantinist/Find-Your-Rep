@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Alamofire
+
 
 
 var myIndex = 0
@@ -14,22 +17,98 @@ var myIndex = 0
 class TableViewController: UITableViewController {
 
     var test2 = [String]()
+//    var URL: String? {
+//        didSet{
+//            print(URL)
+//            //loadData()
+//        }
+//    }
+    
+    var url = "https://api.propublica.org/congress/v1/members/senate/il/current.json"
+    
+    let headers: HTTPHeaders = [
+        "X-API-Key": "mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR"
+    ]
 
+    
+    var senatorArray: [SenatorModel] = []
+    
+    func loadData() {
+        Alamofire.request(url, headers: headers).responseJSON { response in
+            switch response.result {
+            case .success:
+                if let json = response.result.value {
+                    let info = JSON(json)
+                    //print(info["results"][0]["name"].stringValue)
+                    //print(info["results"][1]["name"].stringValue)
+                    //self.senators.append("\(info["results"][0]["name"].stringValue)")
+                    //self.senators.append("\(info["results"][1]["name"].stringValue)")
+                    //print(self.senators)
+                    
+                    let senator1 = SenatorModel(senatorModelName: info["results"][0]["name"].stringValue)
+                    let senator2 = SenatorModel(senatorModelName: info["results"][1]["name"].stringValue)
+                    self.senatorArray.append(senator1)
+                    self.senatorArray.append(senator2)
+                    //print("You selected \(selectedValue)")
+                    
+                    
+                    self.tableView.reloadData()
+                    
+                    
+                }
+            case .failure(let error):
+                print(error)
+            }
+            
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                
+               // var testjson = JSON(data: data)
+            }
+            
+        }
+
+    }
+    
+    override func viewDidLoad() {
+         super.viewDidLoad()
+        loadData()
+        self.tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         // #warning Incomplete implementation, return the number of rows
-         print(testing.senators)
-        return 2
-       
+        return senatorArray.count
     }
-    let testing = ViewController()
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let senatorCell = tableView.dequeueReusableCell(withIdentifier: "senatorCell", for: indexPath)
-        print(testing.senators)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "senatorCell", for: indexPath) as! SenatorCell
+        print("Where am I?")
+        
+        let row = indexPath.row
+        
+        
+        
+            let senator = senatorArray[row]
+            print(senator.senatorModelName)
+            cell.senatorName.text = senator.senatorModelName
+        
+        
+        
+        
+        
+  //      cell.senatorState.text = senator.senatorState
+  //      cell.senatorParty.text = "Trump Party"
+  //      cell.senatorGender.text = "Male"
+
+       
+        
+        
+       
 //        senatorCell.textLabel?.text = "Yay it's working!"
         //  cell.textLabel?.text = testing.senators[indexPath.row]
-            return senatorCell
+            return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)

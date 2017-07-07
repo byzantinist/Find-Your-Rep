@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BED45A04203B41AC793BC6B8 /* Pods_Find_Your_Rep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D61014217A929C5171C78C3 /* Pods_Find_Your_Rep.framework */; };
 		C73DB8F41F0D49E600D977EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DB8F31F0D49E600D977EA /* ViewController.swift */; };
+		C758F5301F100B120016EFC3 /* SenatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C758F52F1F100B120016EFC3 /* SenatorModel.swift */; };
 		C7A102491F0D353C00B44395 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A102481F0D353C00B44395 /* AppDelegate.swift */; };
 		C7A1024E1F0D353C00B44395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A1024C1F0D353C00B44395 /* Main.storyboard */; };
 		C7A102501F0D353C00B44395 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7A1024F1F0D353C00B44395 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		6C80E2B25D71A141088B20D1 /* Pods-Find Your Rep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Find Your Rep.release.xcconfig"; path = "Pods/Target Support Files/Pods-Find Your Rep/Pods-Find Your Rep.release.xcconfig"; sourceTree = "<group>"; };
 		B13A73F2C8A74A5280DE9D7F /* Pods-Find Your Rep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Find Your Rep.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Find Your Rep/Pods-Find Your Rep.debug.xcconfig"; sourceTree = "<group>"; };
 		C73DB8F31F0D49E600D977EA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "View Controllers/ViewController.swift"; sourceTree = "<group>"; };
+		C758F52F1F100B120016EFC3 /* SenatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SenatorModel.swift; path = Models/SenatorModel.swift; sourceTree = "<group>"; };
 		C7A102451F0D353C00B44395 /* Find Your Rep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find Your Rep.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7A102481F0D353C00B44395 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7A1024D1F0D353C00B44395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				C7A540191F0D6D340079AFBD /* StateAbbreviations.swift */,
 				C7A5401B1F0D6F7C0079AFBD /* USStates.swift */,
 				C7E5069E1F0E9D9300FD00B4 /* ApiData.swift */,
+				C758F52F1F100B120016EFC3 /* SenatorModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				C7A5401A1F0D6D340079AFBD /* StateAbbreviations.swift in Sources */,
 				C7E5069F1F0E9D9300FD00B4 /* ApiData.swift in Sources */,
 				C7A1026B1F0D411E00B44395 /* TableViewController.swift in Sources */,
+				C758F5301F100B120016EFC3 /* SenatorModel.swift in Sources */,
 				C7A5401C1F0D6F7C0079AFBD /* USStates.swift in Sources */,
 				C7A102491F0D353C00B44395 /* AppDelegate.swift in Sources */,
 			);
