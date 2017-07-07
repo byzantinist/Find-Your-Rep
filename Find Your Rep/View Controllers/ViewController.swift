@@ -12,19 +12,11 @@ import Alamofire
 import AlamofireImage
 import AlamofireNetworkActivityIndicator
 
-
 // API Key:
 // mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR
 
-
-
-
-
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    var senators = [String]()
-    
-    var URL: String?
-    
+      var URL: String?
     
       let headers: HTTPHeaders = [
         "X-API-Key": "mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR"
@@ -33,31 +25,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var pickerSelector: UIPickerView!
     
     var pickerData: [String] = [String]()
-    var senatorArray: [SenatorModel] = []
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         
-        
-        let roshaan = USStates()
- 
-        let selectedValue = self.pickerData[self.pickerSelector.selectedRow(inComponent: 0)]
-        
-/* Old code            guard let USState = selectedValue, let dictionaryWrap = roshaan.stateDictionary[USState] else {
-            return
-        }*/
-        
-        guard let dictionaryWrap = roshaan.stateDictionary[selectedValue] else {
-            return
-        }
-        
-        self.URL = "https://api.propublica.org/congress/v1/members/senate/\(dictionaryWrap)/current.json"
-        
-                
+
             }
-    
-    @IBAction func locateButtonPressed(_ sender: UIButton) {
-        print("Test Button")
-    }
     
  
     override func viewDidLoad() {
@@ -116,10 +88,22 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                       "West Virginia",
                       "Wisconsin",
                       "Wyoming"]
+
+        let roshaan = USStates()
+        
+        let selectedValue = self.pickerData[self.pickerSelector.selectedRow(inComponent: 0)]
+        
+        /* Old code            guard let USState = selectedValue, let dictionaryWrap = roshaan.stateDictionary[USState] else {
+         return
+         }*/
+        
+        guard let dictionaryWrap = roshaan.stateDictionary[selectedValue] else {
+            return
+        }
+        
+        self.URL = "https://api.propublica.org/congress/v1/members/senate/\(dictionaryWrap)/current.json"
     }
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -129,29 +113,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         if let identifier = segue.identifier {
             if identifier == "showTable" {
                 print("Transitioning")
-                print(senatorArray.count)
                 let tableViewController = segue.destination as! TableViewController
-                //tableViewController.URL = self.URL
+                tableViewController.URL = self.URL
             }
         }
     }
     
-/*    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            if identifier == "displayNote" {
-                print("Table view cell tapped")
-                
-                let indexPath = tableView.indexPathForSelectedRow!
-                let note = notes[notes.count - 1 - indexPath.row]
-                let displayNoteViewController = segue.destination as! DisplayNoteViewController
-                displayNoteViewController.note = note
-                
-            } else if identifier == "addNote" {
-                print("+ button tapped")
-            }
-        }
-    }
- */   
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -166,10 +133,5 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     }
-    /*
-    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-        <#code#>
-    }*/
-
 }
 

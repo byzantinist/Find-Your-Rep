@@ -17,14 +17,16 @@ var myIndex = 0
 class TableViewController: UITableViewController {
 
     var test2 = [String]()
-//    var URL: String? {
-//        didSet{
-//            print(URL)
-//            //loadData()
-//        }
-//    }
+    var URL: String? {
+        didSet{
+            print(URL)
+            print("Maybe it works")
+            //loadData()
+        }
+    }
+   
     
-    var url = "https://api.propublica.org/congress/v1/members/senate/il/current.json"
+//var URL = "https://api.propublica.org/congress/v1/members/senate/il/current.json"
     
     let headers: HTTPHeaders = [
         "X-API-Key": "mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR"
@@ -34,7 +36,7 @@ class TableViewController: UITableViewController {
     var senatorArray: [SenatorModel] = []
     
     func loadData() {
-        Alamofire.request(url, headers: headers).responseJSON { response in
+        Alamofire.request(URL!, headers: headers).responseJSON { response in
             switch response.result {
             case .success:
                 if let json = response.result.value {
@@ -84,7 +86,6 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "senatorCell", for: indexPath) as! SenatorCell
-        print("Where am I?")
         
         let row = indexPath.row
         
