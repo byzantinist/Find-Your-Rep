@@ -13,6 +13,7 @@ class SenatorModel: NSObject {
     
     init(senatorModelName:  String) {
         self.senatorModelName = senatorModelName
+
         
     }
     

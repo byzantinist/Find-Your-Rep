@@ -15,18 +15,6 @@ import Alamofire
 var myIndex = 0
 
 class TableViewController: UITableViewController {
-
-    var test2 = [String]()
-    var URL: String? {
-        didSet{
-            print(URL)
-            print("Maybe it works")
-            //loadData()
-        }
-    }
-   
-    
-//var URL = "https://api.propublica.org/congress/v1/members/senate/il/current.json"
     
     let headers: HTTPHeaders = [
         "X-API-Key": "mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR"
@@ -74,8 +62,10 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
          super.viewDidLoad()
-        loadData()
-        self.tableView.reloadData()
+        
+        
+//        loadData()
+//        self.tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -88,8 +78,6 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "senatorCell", for: indexPath) as! SenatorCell
         
         let row = indexPath.row
-        
-        
         
             let senator = senatorArray[row]
             print(senator.senatorModelName)

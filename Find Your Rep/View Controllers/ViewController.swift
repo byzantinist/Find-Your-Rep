@@ -12,26 +12,45 @@ import Alamofire
 import AlamofireImage
 import AlamofireNetworkActivityIndicator
 
+var selectedState: String?
+var URL: String?
+
 // API Key:
 // mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-      var URL: String?
     
-      let headers: HTTPHeaders = [
+    let headers: HTTPHeaders = [
         "X-API-Key": "mxppcLKQTS3Cu2eMKrZsr2Kp3L795AIs2fc1jtCR"
     ]
-   
+    
     @IBOutlet weak var pickerSelector: UIPickerView!
     
     var pickerData: [String] = [String]()
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
+        let dictionary = USStates()
+        let selectedValue = self.pickerData[self.pickerSelector.selectedRow(inComponent: 0)]
         
-
-            }
+        /* Old code            guard let USState = selectedValue, let dictionaryWrap = roshaan.stateDictionary[USState] else {
+         return
+         }*/
+        
+        guard let selectedState = dictionary.stateDictionary[selectedValue] else {
+            return
+        }
+        
+        //URL = "https://api.propublica.org/congress/v1/members/senate/il/current.json"
+        URL = "https://api.propublica.org/congress/v1/members/senate/\(selectedState)/current.json"
+        print("This is our URL:")
+        print(URL)
+        
+        
+        print("We want to pass: \(selectedState)")
+        
+    }
     
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -88,33 +107,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                       "West Virginia",
                       "Wisconsin",
                       "Wyoming"]
-
-        let roshaan = USStates()
         
-        let selectedValue = self.pickerData[self.pickerSelector.selectedRow(inComponent: 0)]
-        
-        /* Old code            guard let USState = selectedValue, let dictionaryWrap = roshaan.stateDictionary[USState] else {
-         return
-         }*/
-        
-        guard let dictionaryWrap = roshaan.stateDictionary[selectedValue] else {
-            return
-        }
-        
-        self.URL = "https://api.propublica.org/congress/v1/members/senate/\(dictionaryWrap)/current.json"
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "showTable" {
                 print("Transitioning")
+                print(selectedState)
                 let tableViewController = segue.destination as! TableViewController
-                tableViewController.URL = self.URL
+//                tableViewController.selectedState = self.selectedState
             }
         }
     }
