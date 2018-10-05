@@ -24,6 +24,7 @@ class TableViewController: UITableViewController {
     var senatorArray: [SenatorModel] = []
     
     func loadData() {
+        //loadedData
         Alamofire.request(URL!, headers: headers).responseJSON { response in
             switch response.result {
             case .success:
